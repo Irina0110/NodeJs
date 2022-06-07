@@ -6,7 +6,8 @@ let mimeTypes = {
     '.html': 'text/html',
     '.css': 'text/css',
     '.jpg': 'image/jpeg',
-    '.gif': 'image/gif'
+    '.gif': 'image/gif',
+    '.ico': 'image/x-icon'
 };
 http.createServer((request, response) => {
     let pathname, extname, mimeType;
@@ -17,7 +18,7 @@ http.createServer((request, response) => {
         pathname = 'site' + request.url;
     extname = path.extname(pathname);
     mimeType = mimeTypes[extname];
-    if (extname === ".jpg" || extname === ".gif") {
+    if (extname === ".jpg" || extname === ".gif" || extname === ".ico") {
         try {
             let img = fs.readFileSync(pathname);
             console.log(`The file ${pathname} is read and sent to the client\n`);
@@ -30,7 +31,8 @@ http.createServer((request, response) => {
             response.statusCode = 404;
             response.end();
         }
-    } else {
+    }
+    else {
         fs.readFile(pathname, 'utf8', (err, data) => {
             if (err) {
                 console.log('Could not find or open file for reading\n');
