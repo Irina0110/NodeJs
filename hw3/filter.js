@@ -7,9 +7,9 @@ fs.readFile("data.txt", "utf8",
         numbers = data.split(' ');
         for (let elem of numbers){
             if (elem % 2 === 0){
-                out += ' ' + elem;
+                out += elem + ' ';
             }
-            out2 += ' ' + Math.pow(elem, 3);
+            out2 += Math.pow(elem, 3) + ' ';
 
         }
         fs.writeFile("out-1.txt", out, 'utf8', (err) => {
