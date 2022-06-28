@@ -1,0 +1,12 @@
+body, div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#button{
+    border: 1px solid black;
+    padding: 15px 10px;
+    border-radius: 10px;
+    background-color: antiquewhite;
+}

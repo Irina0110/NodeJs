@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Before add</h1>
+    </div>
+    <div id="button">Download tag</div>
+
+<script>
+    let downloadButton = document.getElementById('button');
+    console.log(downloadButton);
+    downloadButton.addEventListener('click', addData);
+    function addData(event){
+        event.preventDefault();
+        fetch('http://localhost:8080/data')
+            .then((res)=>{
+                console.log(res.status);
+                console.log(res.headers);
+
+                if(res.status == 200){
+                    return res.text();
+                } else {
+                    throw new Error('');
+                }
+            })
+            .then((res)=>{
+                let div = document.createElement('div');
+                div.innerHTML = res;
+                document.getElementById('container').appendChild(div);
+            });
+    }
+</script>
+</body>
+</html>
